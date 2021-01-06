@@ -9,10 +9,14 @@ import './index.css';
 import GoatGallery from './components/GoatGallery';
 import { appReducer } from './reducers';
 
+const store = createStore(appReducer, applyMiddleware(logger, thunk));
+
 function App() {
   return (
     <div>
-      <GoatGallery />
+      <Provider store={store}>
+        <GoatGallery />
+      </Provider>
     </div>
   );
 }
